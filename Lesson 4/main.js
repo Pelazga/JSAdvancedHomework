@@ -20,13 +20,14 @@ function checkColor(color) {
 }
 
 function paintDiv() {
-    debugger;
+    // debugger;
     let newColor;
     do {
         newColor = createNewColor();
         var checkResult = checkColor(newColor);
     } while (checkResult === true);
     this.style.backgroundColor = newColor;
+    this.innerHTML = '<p class="colour">' + newColor + '</p>';
 }
 
 
