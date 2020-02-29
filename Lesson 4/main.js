@@ -36,3 +36,13 @@ for (let i = 0; i < divs.length; i++) {
     divs[i].onmouseover = paintDiv;
     
 }
+
+// window.onload = 
+window.onbeforeunload = function() { // событие на закрытие вкладки
+    return "Данные не сохранены. Точно перейти? Не смейте!";
+  };
+// function setHandler() {
+//     window.onbeforeunload = function() { // событие на закрытие вкладки
+//       return "Данные не сохранены. Точно перейти? Не смейте!";
+//     };
+//   };
