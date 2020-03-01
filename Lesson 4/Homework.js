@@ -5,6 +5,6 @@
     // дата в виде - 30/12/2016 - день, месяц, год
 
 var patternIndex = /\d{5}/;
-var patternIp = /\d{3}\.\d{3}\.\d{3}\.\d{3}/;
+var patternIp = /[0-2]\d{0,2}\.[0-2]\d{0,2}\.[0-2]\d{0,2}\.\d{0,3}/;
 var patternPrice = /\$\d*\.\d{2}|\$\d*/;
-var patternDate = /\d{2}\/\d{2}\/\d{4}/;
+var patternDate = /\d{1,2}\/\d{1,2}\/\d{4}/;
