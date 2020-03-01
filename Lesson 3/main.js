@@ -4,7 +4,7 @@ var startTimer;
 function startMyTimer() {
     stopTimer();
     startTimer= setInterval(function(){
-        if (count < 11) {
+        if (count < 31) {
             document.getElementById('display').innerHTML = count;
             count++
         } else {
