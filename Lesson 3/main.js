@@ -1,10 +1,15 @@
 let count = 1;
 var startTimer;
 
-function myFunc() {
+function startMyTimer() {
+    stopTimer();
     startTimer= setInterval(function(){
-        document.getElementById('display').innerHTML = count;
-        count++
+        if (count < 11) {
+            document.getElementById('display').innerHTML = count;
+            count++
+        } else {
+            stopTimer(startTimer);
+        }
     }, 1000);
 }
 
@@ -17,10 +22,4 @@ function reset() {
     document.getElementById('display').innerHTML = count;
 }
 
-function continueTimer() {
-    setInterval(function(){
-        document.getElementById('display').innerHTML = count;
-        count++
-    }, 1000);
-}
-myFunc();
+startMyTimer();
