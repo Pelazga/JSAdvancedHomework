@@ -3,15 +3,20 @@ window.onload = function () {
     var startRolling;
     var position = 0;
     var batton = document.querySelector('button');
+    var screenWidth = screen.width - 200;
 
     batton.addEventListener('click', stopRolling)
     ballDiv.addEventListener('click', startMovement);
 
     function startMovement() {
-        debugger;
+        // debugger;
         startRolling = setInterval(() => {
-            ++position
-            ballDiv.style = `left: ${position}px`
+            if (position == screenWidth) {
+                position = 0;
+            } else {
+                ++position
+                ballDiv.style = `left: ${position}px`
+            }
         }, 5);
     }
 
