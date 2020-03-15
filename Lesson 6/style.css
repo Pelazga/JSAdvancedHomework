@@ -1,0 +1,7 @@
+#ball{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgb(56, 35, 77);
+    position: relative;
+}
