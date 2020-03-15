@@ -19,13 +19,16 @@
 // </style>
 
 let divId1 = document.querySelector('#id1');
-divId1.style.color = 'red';
 let divClass1 = document.querySelector('div.class1');
+let divNewClass = document.querySelector('.newclass');
+
+divId1.style.color = 'red';
+divId1.style.marginTop = '10px';
+divId1.style.background = 'red';
+
 divClass1.style.color = 'blue';
 divClass1.style.fontSize = '14px';
 divClass1.style.textDecoration = 'underline';
 divClass1.classList.add('newclass');
-let divNewClass = document.querySelector('.newclass');
+
 console.log(getComputedStyle(divNewClass));
-divId1.style.marginTop = '10px';
-divId1.style.background = 'red';

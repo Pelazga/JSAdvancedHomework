@@ -7,6 +7,7 @@ window.onload = function () {
         let g = Math.floor(Math.random() * (225 - 0) + 0);
         let b = Math.floor(Math.random() * (225 - 0) + 0);
         let newcolor = 'rgb('+ r + ','+ g + ',' + b + ')';
+        
         return newcolor;
     }
 
@@ -22,10 +23,12 @@ window.onload = function () {
     function paintDiv() {
         // debugger;
         let newColor;
+        
         do {
             newColor = createNewColor();
             var checkResult = checkColor(newColor);
         } while (checkResult === true);
+        
         this.style.backgroundColor = newColor;
         this.innerHTML = '<p class="colour">' + newColor + '</p>';
     }

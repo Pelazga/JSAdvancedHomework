@@ -8,7 +8,7 @@ window.onload = function () {
     
     function dellDiv() {
         var parent = this.parentNode
-        parent.innerHTML = '';
+        parent.parentNode.removeChild(parent);
         // console.log(parent);
     }
 }
