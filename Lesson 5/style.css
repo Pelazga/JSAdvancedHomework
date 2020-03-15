@@ -1,0 +1,13 @@
+#main-div>span{
+    display: inline;
+    position: relative;
+}
+#main-div>span>div{
+    min-width: 20px;
+    min-height: 20px;
+    background: yellowgreen;
+    display: inline;
+    position: absolute;
+    top: 25px;
+    left: auto;
+}

@@ -6,8 +6,8 @@ window.onload = function () {
         let r = Math.floor(Math.random() * (225 - 0) + 0);
         let g = Math.floor(Math.random() * (225 - 0) + 0);
         let b = Math.floor(Math.random() * (225 - 0) + 0);
-        let newcolor = 'rgb('+ r + ','+ g + ',' + b + ')';
-        
+        let newcolor = 'rgb(' + r + ',' + g + ',' + b + ')';
+
         return newcolor;
     }
 
@@ -15,7 +15,7 @@ window.onload = function () {
         for (let i = 0; i < divs.length; i++) {
             if (getComputedStyle(divs[i]).backgroundColor == color) {
                 return true;
-            }        
+            }
         }
         return false
     }
@@ -23,13 +23,14 @@ window.onload = function () {
     function paintDiv() {
         // debugger;
         let newColor;
-        
+
         do {
             newColor = createNewColor();
             var checkResult = checkColor(newColor);
         } while (checkResult === true);
-        
-        this.style.backgroundColor = newColor;
+
+        this.style.backgroundColor = n
+        ewColor;
         this.innerHTML = '<p class="colour">' + newColor + '</p>';
     }
 
@@ -37,10 +38,10 @@ window.onload = function () {
 
     for (let i = 0; i < divs.length; i++) {
         divs[i].onmouseover = paintDiv;
-        
+
     }
 
-    window.onbeforeunload = function() { // событие на закрытие вкладки
+    window.onbeforeunload = function () { // событие на закрытие вкладки
         return "Данные не сохранены. Точно перейти? Не смейте!";
     };
 }

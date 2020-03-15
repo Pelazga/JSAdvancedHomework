@@ -1,10 +1,9 @@
-
 let count = 30;
 var startTimer;
 
 function startMyTimer() {
     stopTimer();
-    startTimer= setInterval(function(){
+    startTimer = setInterval(function () {
         if (count > 0) {
             document.getElementById('display').innerHTML = count;
             // count++
