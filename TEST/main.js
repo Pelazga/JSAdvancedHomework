@@ -1,14 +1,35 @@
 window.addEventListener('load', function () {
-    var loader = document.querySelector('.cover');
-    var swapiUrl = 'https://swapi.co/api/people/1';
     var charUrl = 'https://swapi.co/api/people/';
-    var charListDiv = document.querySelector('.carList');
+    var charListDiv = document.querySelector('.charList');
     var nextButton = document.querySelector('.next');
+    var previousButton = document.querySelector('.previous');
 
+    var curentPage = 10;
+    let firsChar = 0;
     // nextButton.addEventListener('click', getNewChar);
 
+    nextButton.addEventListener('click', goNextPage);
+    previousButton.addEventListener('click', goBack);
+
+    function goNextPage() {
+        curentPage += 10;
+        firsChar +=10;
+        charListDiv.innerHTML ='';
+        createTenChar();
+    }
+
+    function goBack() {
+        if (curentPage > 10 || firsChar > 0) {
+            curentPage -= 10;
+            firsChar -=10;
+            charListDiv.innerHTML ='';
+            createTenChar();
+        }
+    }
+    
+
     var getJson = function(url, fooToCreateEl, charDiv) {
-        loader.classList.toggle('hidden');
+        // loader.classList.toggle('hidden');
         fetch(url)
             .then(
                 function (response) {
@@ -19,8 +40,7 @@ window.addEventListener('load', function () {
                     response.json()
                             .then(function (data) {
                                 fooToCreateEl(data, charDiv);
-                                console.log(data);
-                                loader.classList.toggle('hidden');
+                                // loader.classList.toggle('hidden');
                             });
                 }
             )
@@ -30,23 +50,26 @@ window.addEventListener('load', function () {
     }
 
     function createTenChar (){
-        for (let i = 1; i < 11; i++) {
+        for (let i = curentPage; i > firsChar; i--) {
             let newUrl = charUrl + i
-            let charData = getJson(newUrl , createTableForChar);
-            console.log(charData);
-            
+            let charData = getJson(newUrl , createTableForChar);            
         }
     }
 
     createTenChar();
-    
+
+    function showHide (e) {
+        targetDiv = e.target.nextElementSibling;
+        targetDiv.classList.toggle('hidden')
+    };
 
 
     function createTableForChar(data) {
         var charDiv = document.createElement('div');
-        charDiv.classList.add('carecter');
+        // charDiv.classList.add('character');
         charDiv.innerHTML = charTempl;
         charDiv.querySelector('.name').innerHTML = data.name
+        charDiv.querySelector('.name').addEventListener('click', showHide)
         charDiv.querySelector('.birthday').innerHTML = data.birth_year
         charDiv.querySelector('.gender').innerHTML = data.gender
         let filmArr = data.films;
@@ -56,6 +79,7 @@ window.addEventListener('load', function () {
         let speciesUrl = data.species;
         addPlanetOrSpecies(speciesUrl, charDiv, 'species')
         charListDiv.appendChild(charDiv);
+        
         
     }
     function createFilmList(arr, charDiv) {
@@ -71,7 +95,6 @@ window.addEventListener('load', function () {
         newli.innerHTML = data.title;
         let filmList = charDiv.querySelector('.filmList');
         filmList.appendChild(newli);
-        console.log(filmList);
     }
 
     function addPlanetOrSpecies(url, charDiv, className) {
@@ -81,52 +104,52 @@ window.addEventListener('load', function () {
     }
 
 
-    var charTempl = `<div>
-                        <div>
-                            Name
-                        </div>
+    var charTempl = `<div class="character">
                         <div class="name">
-                            
+
                         </div>
-                    </div>
-                    <div>
-                        <div>
-                            Birthday
-                        </div>
-                        <div class="birthday">
-                            
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            Gender
-                        </div>
-                        <div class="gender">
-                            
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            Film list
-                        </div>
-                        <div class="films">
-                            <ul class="filmList">
-                            </ul>
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            Home planet
-                        </div>
-                        <div class="homeworld">
-                        </div>
-                    </div>
-                    <div>
-                        <div>
-                            Species
-                        </div>
-                        <div class="species">
+                        <div class="aditional-info hidden">
+                            <div>
+                                <div>
+                                    Birthday
+                                </div>
+                                <div class="birthday">
+                                    
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    Gender
+                                </div>
+                                <div class="gender">
+                                    
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    Film list
+                                </div>
+                                <div class="films">
+                                    <ul class="filmList">
+                                    </ul>
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    Home planet
+                                </div>
+                                <div class="homeworld">
+                                </div>
+                            </div>
+                            <div>
+                                <div>
+                                    Species
+                                </div>
+                                <div class="species">
+                                </div>
+                            </div>
                         </div>
                     </div>`
              
+
 })
